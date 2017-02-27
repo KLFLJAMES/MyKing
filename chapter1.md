@@ -1,28 +1,62 @@
-## 四月份
+# 四月份
+
+## 任务
 
 - 心愿单刷新
-- 使用JEPhotogra
-
-phyHelper类对打开相册方法进行封装
-- 聊天列表排序(NSSortDescriptor)
+- 使用JEPhotographyHelper类对打开相册方法进行封装
+- 聊天列表排序
 - 图片浏览器(YZPhotoBrowser)
 - JESmartButton
 - 解决gif内存消耗过大问题(FLAnimatedImage)
 - 分离服务器状态小球
 
-## 六月份
+## 知识点
+- 对于协议的使用,刷新心愿单
+-  NSSortDescriptor
+- 表情键盘使用富文本
+- textField占位文字
+    + attributedPlaceholder
+    + drawPlaceholderInRect
+    + 运行时+KVO
+- 按钮内部调整
+    + 重写两个方法
+    + 在layoutSubviews中修改
+
+
+# 六月份
+
+## 任务
 
 - 微信登录,分享
 - 设计师模块(文章,作品,简介,主页)
 - 解决键盘遮挡(TPKboardAvoiding)
 
-## 七月份
+
+## 知识点
+
+- 微信登录,分享,取消流程
+- 看SDWebImage源码
+
+# 七月份
+
+## 任务
 
 - 精选,案例的筛选
 - 分离首页
 - 认证设计师(案例,简介,标签)
 
-## 八月份
+## 知识点
+
+- 几种存储方式
+- UIScrollView + UIViewController
+- kvo
+- 存取gif(SDWebImage)
+- 允许上传gif
+
+
+# 八月份
+
+## 任务
 
 - 案例精选合并到一块,增加设计师模块
 - 首页改版,改为tabBar结构
@@ -32,20 +66,40 @@ phyHelper类对打开相册方法进行封装
 - DNA采集
 - 根据偏好展示首页
 
-## 九月份
+## 知识点
+
+- NSPredicate
+- 使用信号量
+
+
+# 九月份
+
+## 任务
 
 - 转场动画三方库
 - 登录时切换动画
 - 适配iOS10
 - 重构搜索模块(新增各种筛选条件)筛选或搜索后有案例和设计师两种结果
 
-## 十月份
+## 知识点
+
+- 转场动画及库XWTransitionPractice 
+
+# 十月份
+
+## 任务
 
 - 设计师首页重构
 - 设计师模式和用户模式
 - 设计师更多个人资料,服务,案例管理
 
-## 十一月份
+## 知识点
+
+- tableViewCell的但多选
+
+# 十一月份
+
+## 任务
 
 - 新增频道操作(排序,增,删)
 - 瀑布流布局
@@ -53,6 +107,10 @@ phyHelper类对打开相册方法进行封装
 - 重构登录注册流程,修改DNA采集时机
 - 地区只展示市
 - 发布项目页面由服务器配置
+
+## 知识点
+
+- 
 
 ## 十二月份
 
