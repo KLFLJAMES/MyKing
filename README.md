@@ -1,3 +1,2 @@
-# My Awesome Book
+# My Book
 
-- something
