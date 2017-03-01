@@ -66,12 +66,14 @@ NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus sta
 `__bridge,__bridge_transfer,__bridge_retained`
 
 * 1.\_\_bridge:CF和OC对象转化时只涉及对象类型不涉及对象所有权的转化；
+
   ```
   NSURL *url = [[NSURL alloc] initWithString:@"http://www.baidu.com"];
   CFURLRef ref = (__bridge CFURLRef)url;
   ```
 
 * 2.\_\_bridge\_transfer:常用在讲CF对象转换成OC对象时，将CF对象的所有权交给OC对象，此时ARC就能自动管理该内存；（作用同CFBridgingRelease\(\)  代表ARC负责自动释放该对象,不需要我们去release
+
 * 3.\_\_bridge\_retained:（与\_\_bridge\_transfer相反）常用在将OC对象转换成CF对象时，将OC对象的所有权交给CF对象来管理；\(作用同CFBridgingRetain\(\)\)  代表OC要将对象所有权交给CF对象自己来管理,所以我们要在ref使用完成以后用CFRelease将`其手`动释放.
 
   ```
@@ -83,9 +85,7 @@ NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus sta
 
 ### 此类的核心方法,设置监听网咯监听
 
-` startMonitoring `
-
-
+`startMonitoring`
 
 * 1.我们先新建上下文
 
@@ -94,14 +94,43 @@ NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus sta
 * 3.加入RunLoop池
 
 
-
-
 ### KVO之注册键值依赖
 
-* 举例,比如有个**Card类,**
+* 举例,比如有个**Card\(\(User\)user,\(NSString\)info\)类**和**User\(\(NSString\)name,\(NSInteger\)age\)**类**,**在Card.m中注册键值依赖,让user.name和user.age依赖info.这样监听info时,若info或user.name或user.age发生变化时.都会到回调方法中
 
+```
++ (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
+ NSSet * keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+ NSArray * moreKeyPaths = nil;
+ if ([key isEqualToString:@"info"])
+ {
+ moreKeyPaths = [NSArray arrayWithObjects:@"user.name", @"user.age", nil];
+ }
+ if (moreKeyPaths)
+ {
+ keyPaths = [keyPaths setByAddingObjectsFromArray:moreKeyPaths];
+ }
+ return keyPaths;
+}
+```
+
+* 监听与回调
+
+```
+// 监听
+[self.card addObserver:self forKeyPath:@"info" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:@"我要观察card.info"];
+
+// 回调
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary< NSKeyValueChangeKey,id> *)change context:(void *)context {
+ NSLog(@"被监测的那个对象的属性所在的路径:%@",keyPath);
+ NSLog(@"被观察者:%@", object);
+ NSLog(@"属性所有状态下的值:%@", change);
+ NSLog(@"在注册观察者的时候,传过来的context :%@", context);
+ if(![[change objectForKey:@"new"]isEqualToString:[change objectForKey:@"old"]]) {
+ self.view.backgroundColor= [UIColor redColor];
+ }
+}
+```
 
 ### [NSSet 小结](http://blog.csdn.net/ms2146/article/details/8657011)
-
-
 
