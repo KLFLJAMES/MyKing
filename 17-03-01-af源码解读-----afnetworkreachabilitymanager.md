@@ -2,7 +2,14 @@
 
 ### 常量写法规范
 
+* 了解[**UIKIT\_EXTERN**](http://www.cnblogs.com/hissia/p/5643151.html)**\*\***简单来说：\*\*就是将函数修饰为兼容以往C编译方式的、具有extern属性\(文件外可见性\)、public修饰的方法或变量库外仍可见的属性
+
+* 了解FOUNDATION\_EXPORT,除了下面的解释它还可以直接用等号去判断两个字符串是否相等.
+
+* ![](/assets/Snip20170302_10.png)
+
 * .h中
+
 
 ```
 extern NSString * const AFNetworkingReachabilityDidChangeNotification;
@@ -49,6 +56,10 @@ NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus sta
  }
 }
 ```
+
+
+
+### [跨平台编译的宏定义选择](http://blog.csdn.net/openglnewbee/article/details/17024453)
 
 ### 私有方法写法
 
