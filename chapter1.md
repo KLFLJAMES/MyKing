@@ -74,15 +74,7 @@
 
 ## 注意
 
-* 密码
-  ![](/assets/Snip20161226_2.png)
-  ![](/assets/Snip20161226_1.png)
-
 * inset 和 offset
   ![](/assets/Snip20161220_3.png)
   ![](/assets/Snip20161220_2.png)
-
-* 公积金密码(交通银行)生日颠倒
-
-* gitHub = appId
 
