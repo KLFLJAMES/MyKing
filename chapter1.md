@@ -1,7 +1,6 @@
 ## 自定义表情键盘
 
- [http:\/\/blog.sina.com.cn\/s\/blog\_6317728d0102vwjv.html](http://blog.sina.com.cn/s/blog_6317728d0102vwjv.html)
-
+[http:\/\/blog.sina.com.cn\/s\/blog\_6317728d0102vwjv.html](http://blog.sina.com.cn/s/blog_6317728d0102vwjv.html)
 
 * 使用系统自带的表情定制表情键盘
 
@@ -56,7 +55,7 @@
 
 ## git暂存
 
-http://www.tuicool.com/articles/rUBNBvI
+[http:\/\/www.tuicool.com\/articles\/rUBNBvI](http://www.tuicool.com/articles/rUBNBvI)
 
 * 问题:当出现一个紧急bug需要处理,但是又不适合提交时,就需要将改动过得文件暂存起来,处理完在恢复
 * 操作步骤:
@@ -71,16 +70,19 @@ http://www.tuicool.com/articles/rUBNBvI
     // 删除所有进度 git stash clear
     ```
 
+
+
 ## 注意
 
-- 密码
-![](/assets/Snip20161226_2.png)
-![](/assets/Snip20161226_1.png)
+* 密码
+  ![](/assets/Snip20161226_2.png)
+  ![](/assets/Snip20161226_1.png)
 
-- inset 和 offset
-![](/assets/Snip20161220_3.png)
-![](/assets/Snip20161220_2.png)
+* inset 和 offset
+  ![](/assets/Snip20161220_3.png)
+  ![](/assets/Snip20161220_2.png)
 
-- 
+* 公积金密码(交通银行)生日颠倒
 
+* gitHub = appId
 
