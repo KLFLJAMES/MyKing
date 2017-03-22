@@ -33,7 +33,7 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 以下几个都是必须的,否则到后面验证.podspec文件会报错
 
-* 后缀名为.podspec的文件,该文件是依赖库的描述文件,文件名称要和我们想创建的依赖库名称保持一致,这里我们的名字是TestCocoapod.podspec
+* 创建后缀名为.podspec的文件,该文件是依赖库的描述文件,文件名称要和我们想创建的依赖库名称保持一致,这里我们的名字是TestCocoapod.podspec
 
   * 创建方式`pod spec create TestCocoapod`
 
@@ -64,7 +64,7 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 
 
-* 主类文件,就是我们想让其他人用的类.比如我共享的颜色分类放在了TestCocoapod文件夹里.对应我们上面填写的**s.source\_files**
+* 创建主类文件,就是我们想让其他人用的类.比如我共享的颜色分类放在了TestCocoapod文件夹里.对应我们上面填写的**s.source\_files**
 
   * 写法
 
@@ -73,7 +73,7 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 
 
-* demo工程 为了快速地教会别人使用我们的Pods依赖库，通常需要提供一个demo工程.
+* 创建demo工程 为了快速地教会别人使用我们的Pods依赖库，通常需要提供一个demo工程.
   ![](/assets/Snip20170322_25.png)
 
 #### 提交添加的文件到gitHub
@@ -148,11 +148,96 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 ## 参考博客
 
-### [**发布CocoaPods组件碰到的坑与心得体会**](http://www.jianshu.com/p/e5209ac6ce6b)
+### **[发布CocoaPods组件碰到的坑与心得体会](http://www.jianshu.com/p/e5209ac6ce6b)**
 
 ### [CocoaPods详解之----制作篇](http://blog.csdn.net/wzzvictory/article/details/20067595)
 
-### [**创建CocoaPods的制作过程**](http://www.jianshu.com/p/98407f0c175b)
+### **[创建CocoaPods的制作过程](http://www.jianshu.com/p/98407f0c175b)**
 
 ### [iOS之创建CocoaPods私有库采坑记](http://www.tuicool.com/articles/Jnau6zR)
+
+
+
+# 制作.framework和.bundle**以及遇到的一些坑**
+
+## 制作
+
+## .framework
+
+* 新建工程 创建完成之后将自动生成的.h文件删掉，因为我们既需要头文件也需要实现文件，所以我们自己新建个类文件
+
+  ![](/assets/Snip20170322_35.png)
+* 工程的配置
+  * TARGETS - &gt;Build Settings -&gt; Architectures:添加 _**armv7s**_；
+  * Build Active Architecture Only" 设置为 "NO"
+
+  * Mach-O Type" 设置为 "Static Library"
+  *  iOS Deployment Target 这是支持最低运行iOS系统版本
+
+* 暴露头文件 实现文件隐藏起来
+
+  ![](/assets/Snip20170322_40.png)
+* 生成framework 来到工程目录树,分别选择真机和模拟器进行编译 Products下的文件会由之前的红色变成灰色的
+  ![](/assets/Snip20170322_41.png)
+  * Show in Finder 会出现真机和模拟器两个文件
+    ![](/assets/Snip20170322_38.png)
+    ![](/assets/Snip20170322_39.png)
+
+
+* 合成通用framework  我们需要将上图内的两个文件（FrameworkTest）合并成一个新的文件，并放在上述.framework文件中（真机or模拟器），使之可以在模拟器和真机上均能运行
+  *  命令行语句：sudo lipo -create \(此处请填写真机FrameworkTest文件路径 上述的FrameworkTest文件\) \(此处填写模拟器FrameworkTest文件路径\) -output 自定义合成文件存储路径（合成文件的名字FrameworkTest）
+
+  * 替换 将合成的FrameworkTest文件复制到上述真机or模拟机器编译执行的.framework文件夹内，将原来的FrameworkTest文件替换，至此我们就制作完成了Framework框架了，也就是当前的.framework文件
+    * 替换原因 未合成的FrameworkTest文件要么只能在真机上运行，要么只能在模拟器上运行。合成文件为的就是让.framework文件既能在真机上运行也能在模拟器上运行
+
+
+* 使用 将.framework文件添加到工程中,调用.framework内部头文件声明的方法.
+
+
+## .bundle
+
+* 新建工程 在setting设置BaseSDK 为iOS版本
+
+  ![](/assets/Snip20170322_43.png)
+  ![](/assets/Snip20170322_44.png)
+* 工程配置
+  * 在TARGTS-&gt;Build Settings-&gt;Deployment-&gt;iOS Deployment Target-&gt;选择自己需要支持的最低系统。
+  * build后会生成一个bundle包，但在包中的图片由以前的png格式全部变成tiff格式。为了防止这种格式转变。需要在Build Settings-&gt;Architectures-&gt;Base SDK-&gt;选择iOS的SDK要支持的版本。这时TARGETS中Build Setting-&gt;User-Defined中会出现一个新的Key：COMBINE\_HIDPI\_DEBUG\_INFO,把它设置为NO。
+
+* 使用 拖进项目
+
+
+## 遇到的问题
+
+**framework**
+
+* 如果你用了Category, 别人在用你的framework时会发生崩溃。这时别人在引用时需要在工程中other linker flags中添加-ObjC如果依然有问题，再添加-all\_load。
+
+* 需要支持bitcode, 在TAGETS的Build setting中搜索Other C Flags，添加命令“-fembed-bitcode”。同样的设置在PROJECT中。如果不进行以上操作。别人在集成你的framework时可以编译，亦可以真机测试。唯独在打包时会发出警告并打包失败。警告为framework不支持bitcode！
+
+* 若framework中包含sb\/xib等文件,需要将.framework加入到Copy Bundle Resources 
+  ![](/assets/Snip20170322_45.png)
+
+**bundle**
+* 若bundle中包含sb\/xib等文件,也需要将.bundle加入到Copy Bundle Resources
+  ![](/assets/Snip20170322_46.png)
+
+
+
+
+### 参考博客
+
+### [**xcode7制作framework,结合xib,storyboard,资源文件等**](http://www.jianshu.com/p/038dab7accbc)
+
+### [**iOS开发Xcode7 Framework制作流程简介**](http://www.jianshu.com/p/bc89f3e5b58c)
+
+### [iOS从静态库加载Storyboard并创建ViewController教程](http://www.jianshu.com/p/f2ffe8325519)
+
+### [Loading nib from my own bundle?](http://stackoverflow.com/questions/13825531/loading-nib-from-my-own-bundle)
+
+
+
+
+
+
 
