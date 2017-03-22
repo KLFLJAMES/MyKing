@@ -148,11 +148,11 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 ## 参考博客
 
-### [**发布CocoaPods组件碰到的坑与心得体会**](http://www.jianshu.com/p/e5209ac6ce6b)
+### **[发布CocoaPods组件碰到的坑与心得体会](http://www.jianshu.com/p/e5209ac6ce6b)**
 
 ### [CocoaPods详解之----制作篇](http://blog.csdn.net/wzzvictory/article/details/20067595)
 
-### [**创建CocoaPods的制作过程**](http://www.jianshu.com/p/98407f0c175b)
+### **[创建CocoaPods的制作过程](http://www.jianshu.com/p/98407f0c175b)**
 
 ### [iOS之创建CocoaPods私有库采坑记](http://www.tuicool.com/articles/Jnau6zR)
 
@@ -168,12 +168,13 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 * 工程的配置
 
-  * TARGETS - &gt;Build Settings -&gt; Architectures:添加 **_armv7s_**；
+  * TARGETS - &gt;Build Settings -&gt; Architectures:添加 _**armv7s**_；
   * Build Active Architecture Only" 设置为 "NO"
 
   * Mach-O Type" 设置为 "Static Library"
 
   * iOS Deployment Target 这是支持最低运行iOS系统版本
+
 
 * 暴露头文件 实现文件隐藏起来
 
@@ -181,6 +182,7 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 * 生成framework 来到工程目录树,分别选择真机和模拟器进行编译 Products下的文件会由之前的红色变成灰色的
   ![](/assets/Snip20170322_41.png)
+
   * Show in Finder 会出现真机和模拟器两个文件
     ![](/assets/Snip20170322_38.png)
     ![](/assets/Snip20170322_39.png)
@@ -221,6 +223,8 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 * 需要支持bitcode, 在TAGETS的Build setting中搜索Other C Flags，添加命令“-fembed-bitcode”。同样的设置在PROJECT中。如果不进行以上操作。别人在集成你的framework时可以编译，亦可以真机测试。唯独在打包时会发出警告并打包失败。警告为framework不支持bitcode！
 
+  [**理解Bitcode：一种中间代码**](http://www.cocoachina.com/ios/20150818/13078.html)
+
 * 若framework中包含sb\/xib等文件,需要将.framework加入到Copy Bundle Resources 
   ![](/assets/Snip20170322_45.png)
 
@@ -232,9 +236,9 @@ cocoaPods都托管在gitHub上,所以我们首先在gitHub上创建一个自己�
 
 ### 参考博客
 
-### **[xcode7制作framework,结合xib,storyboard,资源文件等](http://www.jianshu.com/p/038dab7accbc)**
+### [**xcode7制作framework,结合xib,storyboard,资源文件等**](http://www.jianshu.com/p/038dab7accbc)
 
-### **[iOS开发Xcode7 Framework制作流程简介](http://www.jianshu.com/p/bc89f3e5b58c)**
+### [**iOS开发Xcode7 Framework制作流程简介**](http://www.jianshu.com/p/bc89f3e5b58c)
 
 ### [iOS从静态库加载Storyboard并创建ViewController教程](http://www.jianshu.com/p/f2ffe8325519)
 
