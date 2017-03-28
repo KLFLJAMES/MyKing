@@ -8,7 +8,7 @@
 
 * 通过fastlane和fir配合自己写的脚本实现.
 
-#### 安装**[fastlane](https://github.com/fastlane/fastlane)**环境
+#### 安装[**fastlane**](https://github.com/fastlane/fastlane)环境
 
 fastlane is a tool for iOS, Mac, and Android developers to automate tedious tasks like generating screenshots, dealing with provisioning profiles, and releasing your application.
 
@@ -118,6 +118,14 @@ fastlane is a tool for iOS, Mac, and Android developers to automate tedious task
   ![](/assets/Snip20170328_10.png)
 
   ![](/assets/Snip20170328_12.png)
+
+
+
+### 注意
+
+* 打测试包和AppStore时需要将参数修改下
+
+  ![](/assets/Snip20170328_13.png)
 
 ### 参考文档
 
