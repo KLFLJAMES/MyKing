@@ -8,7 +8,7 @@
 
 * 通过fastlane和fir配合自己写的脚本实现.
 
-#### 安装**[fastlane](https://github.com/fastlane/fastlane)****环境**
+#### 安装[**fastlane**](https://github.com/fastlane/fastlane)环境
 
 fastlane is a tool for iOS, Mac, and Android developers to automate tedious tasks like generating screenshots, dealing with provisioning profiles, and releasing your application.
 
@@ -111,6 +111,7 @@ fastlane is a tool for iOS, Mac, and Android developers to automate tedious task
 * 将编写好的脚本放到工程目录下
 
   ![](/assets/Snip20170328_9.png)
+
 * 终端执行,总用时203秒
   `sh /Users/fanzhou/Desktop/JIAE3/JiaeD2C/build_using_gym.sh`
 
@@ -136,8 +137,4 @@ fastlane is a tool for iOS, Mac, and Android developers to automate tedious task
 #### 编写脚本
 
 * [使用fastlane gym\/xctool编写ipa打包脚本](http://www.jianshu.com/p/54ab07f2e63b)
-
-
-
-
 
