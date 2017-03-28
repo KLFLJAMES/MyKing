@@ -8,7 +8,7 @@
 
 * 通过fastlane和fir配合自己写的脚本实现.
 
-#### 安装[**fastlane**](https://github.com/fastlane/fastlane)环境
+#### 安装**[fastlane](https://github.com/fastlane/fastlane)**环境
 
 fastlane is a tool for iOS, Mac, and Android developers to automate tedious tasks like generating screenshots, dealing with provisioning profiles, and releasing your application.
 
@@ -37,7 +37,7 @@ fastlane is a tool for iOS, Mac, and Android developers to automate tedious task
 
     ![](/assets/Snip20170328_4.png)
 
-    * 解决办法.指定路径
+    * 解决办法.指定路径,期间会输入AppId等
       `sudo gem install -n /usr/local/bin fastlane`
 
   * 安装结束后,在终端进行验证
@@ -117,6 +117,7 @@ fastlane is a tool for iOS, Mac, and Android developers to automate tedious task
 
   ![](/assets/Snip20170328_10.png)
 
+  ![](/assets/Snip20170328_12.png)
 
 ### 参考文档
 
