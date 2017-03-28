@@ -11,4 +11,5 @@
 * [17.3.21 制作pod framework bundle](17321-制作pod-framework-bundle.md)
 * [17.3.22 三方登录 分享](17322-三方登录-分享.md)
 * [17.3.23 探索log系统 缓存框架 转模型框架](17323-探索log.md)
+* [17.3.27 iOS自动打包并上传的fir上](17327-ios自动打包并上传的fir上.md)
 
